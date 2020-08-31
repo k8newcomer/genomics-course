@@ -1,0 +1,45 @@
+---
+title: "Lab1"
+author: "Kate Newcomer"
+date: "24 August 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercise 1
+```{r ex1}
+x <- 3
+y <- 15
+x+y
+y-x
+x-y
+x*y
+x/y
+y/x
+```
+## Exercise 2
+```{r ex2}
+x <- 2
+y <- 3
+x^5 > y^4
+```
+
+## Exercise 3
+```{r ex3}
+x <- c(22,62,148,43,129)
+sum(x)
+22/sum(x)
+62/sum(x)
+148/sum(x)
+43/sum(x)
+129/sum(x)
+```
+
+## Exercise 4
+```{r ex4}
+x<- c("A","T","C","G")
+sort(x)
+```
