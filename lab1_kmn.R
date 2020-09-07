@@ -25,3 +25,4 @@ sum(x)
 ### Exercise 4
 x<- c("A","T","C","G")
 sort(x)
+
