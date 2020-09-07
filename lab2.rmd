@@ -3,7 +3,7 @@ title: "lab2.rmd"
 author: "Katrina Newcomer"
 date: "August 31, 2020"
 output: html_document
-bibliography: references.bib
+bibliography: data/references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -44,6 +44,5 @@ x<- c("A","T","C","G")
 sort(x)
 ```
 
-Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].
-
 # REFERENCES
+[@Xie2020]
