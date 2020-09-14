@@ -3,6 +3,7 @@ title: "lab3b"
 author: "Kate Newcomer"
 date: "September 7, 2020"
 output: html_document
+bibliography: data/references.bib
 ---
 
 
@@ -39,6 +40,7 @@ surveys_sml <- surveys %>%
 surveys_sml
 ```
 
+# Challenge 1
 ```{r Challenge 1}
 surveys %>%
     filter(year < 1995) %>%
@@ -59,6 +61,7 @@ surveys %>%
   mutate(weight_kg = weight / 1000) %>%
   head()
 ```
+# Challenge 2
 ```{r Challenge2}
 surveys_hindfoot_cm <- surveys %>%
     filter(!is.na(hindfoot_length)) %>%
@@ -106,7 +109,7 @@ surveys %>%
             min_weight = min(weight)) %>%
   arrange(desc(mean_weight))
 ```
-
+# Counting
 ```{r Counting}
 surveys %>%
     count(sex) 
@@ -122,12 +125,13 @@ surveys %>%
   arrange(species, desc(n))
 ```
 
+# Challenge 3
 ```{r Challenge3}
-1. 
+ 
 surveys %>%
     count(plot_type) 
 
-2.
+
 surveys %>%
     filter(!is.na(hindfoot_length)) %>%
     group_by(species_id) %>%
@@ -138,7 +142,6 @@ surveys %>%
         n = n()
     )
 
-3.
 surveys %>%
     filter(!is.na(weight)) %>%
     group_by(year) %>%
@@ -146,8 +149,7 @@ surveys %>%
     select(year, genus, species, weight) %>%
     arrange(year)
 ```
-
-```{r Reshaping}
+```{r}
 surveys_gw <- surveys %>%
   filter(!is.na(weight)) %>%
   group_by(plot_id, genus) %>%
@@ -164,8 +166,7 @@ surveys_gw %>%
   spread(genus, mean_weight, fill = 0) %>%
   head()
 ```
-
-```{r Gathering}
+```{r}
 surveys_gw %>%
   spread(genus, mean_weight, fill = 0) %>%
   head()
@@ -174,34 +175,33 @@ surveys_gather <- surveys_spread %>%
   gather(key = "genus", value = "mean_weight", -plot_id)
 
 str(surveys_gather)
+
 surveys_spread %>%
   gather(key = "genus", value = "mean_weight", Baiomys:Spermophilus) %>%
   head()
 ```
-
+# Challenge 4
 ```{r Challenge4}
-1.
 surveys_spread_genera <- surveys %>%
   group_by(plot_id, year) %>%
   summarize(n_genera = n_distinct(genus)) %>%
   spread(year, n_genera)
-head(surveys_spread_genera)
+  head(surveys_spread_genera)
 
-2.
 surveys_spread_genera %>%
   gather("year", "n_genera", -plot_id)
 
-3.
+
 surveys_long <- surveys %>%
   gather("measurement", "value", hindfoot_length, weight)
 
-4.
+
 surveys_long %>%
   group_by(year, measurement, plot_type) %>%
   summarize(mean_value = mean(value, na.rm=TRUE)) %>%
   spread(measurement, mean_value)
 ```
-
+# Exporting Data
 ```{r ExportingData}
 surveys_complete <- surveys %>%
   filter(!is.na(weight),        
@@ -218,4 +218,7 @@ surveys_complete <- surveys_complete %>%
 write_csv(surveys_complete, path = "data/surveys_complete.csv")
 
 ```
+# REFERENCES
+[@Xie2020]
+[@RCoreTeam]
 

@@ -372,7 +372,7 @@ summary {
 
 <pre class="r"><code>library(&quot;tidyverse&quot;)</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.3</code></pre>
-<pre><code>## -- Attaching packages ----------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## -- Attaching packages ---------------------------------------------------------------------- tidyverse 1.3.0 --</code></pre>
 <pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
 ## v tibble  3.0.3     v dplyr   1.0.2
 ## v tidyr   1.1.1     v stringr 1.4.0
@@ -383,8 +383,9 @@ summary {
 <pre><code>## Warning: package &#39;readr&#39; was built under R version 3.6.3</code></pre>
 <pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.6.3</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.6.3</code></pre>
 <pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.6.3</code></pre>
-<pre><code>## -- Conflicts -------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ------------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>surveys &lt;- read_csv(&quot;data/portal_data_joined.csv&quot;)</code></pre>
@@ -535,6 +536,8 @@ surveys_sml</code></pre>
 ## 15 RM         F          4
 ## 16 RM         M          4
 ## 17 RM         M          4</code></pre>
+<div id="challenge-1" class="section level1">
+<h1>Challenge 1</h1>
 <pre class="r"><code>surveys %&gt;%
     filter(year &lt; 1995) %&gt;%
     select(year, sex, weight)</code></pre>
@@ -618,6 +621,9 @@ surveys_sml</code></pre>
 ## 6      1453    11     5  1978       2 NL         M                  NA
 ## # ... with 6 more variables: weight &lt;dbl&gt;, genus &lt;chr&gt;, species &lt;chr&gt;,
 ## #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;, weight_kg &lt;dbl&gt;</code></pre>
+</div>
+<div id="challenge-2" class="section level1">
+<h1>Challenge 2</h1>
 <pre class="r"><code>surveys_hindfoot_cm &lt;- surveys %&gt;%
     filter(!is.na(hindfoot_length)) %&gt;%
     mutate(hindfoot_cm = hindfoot_length / 10) %&gt;%
@@ -760,6 +766,9 @@ surveys %&gt;%
 ##  9 F     SH                78.8         30
 ## 10 F     SF                69           46
 ## # ... with 54 more rows</code></pre>
+</div>
+<div id="counting" class="section level1">
+<h1>Counting</h1>
 <pre class="r"><code>surveys %&gt;%
     count(sex) </code></pre>
 <pre><code>## # A tibble: 3 x 2
@@ -819,8 +828,9 @@ surveys %&gt;%
 ##  9 &lt;NA&gt;  brunneicapillus    50
 ## 10 &lt;NA&gt;  chlorurus          39
 ## # ... with 71 more rows</code></pre>
-<pre class="r"><code>1. </code></pre>
-<pre><code>## [1] 1</code></pre>
+</div>
+<div id="challenge-3" class="section level1">
+<h1>Challenge 3</h1>
 <pre class="r"><code>surveys %&gt;%
     count(plot_type) </code></pre>
 <pre><code>## # A tibble: 5 x 2
@@ -831,8 +841,6 @@ surveys %&gt;%
 ## 3 Rodent Exclosure           4233
 ## 4 Short-term Krat Exclosure  5906
 ## 5 Spectab exclosure          3918</code></pre>
-<pre class="r"><code>2.</code></pre>
-<pre><code>## [1] 2</code></pre>
 <pre class="r"><code>surveys %&gt;%
     filter(!is.na(hindfoot_length)) %&gt;%
     group_by(species_id) %&gt;%
@@ -857,8 +865,6 @@ surveys %&gt;%
 ##  9 OX                       19.1                 13                21     8
 ## 10 PB                       26.1                  2                47  2864
 ## # ... with 15 more rows</code></pre>
-<pre class="r"><code>3.</code></pre>
-<pre><code>## [1] 3</code></pre>
 <pre class="r"><code>surveys %&gt;%
     filter(!is.na(weight)) %&gt;%
     group_by(year) %&gt;%
@@ -1044,14 +1050,15 @@ str(surveys_gather)</code></pre>
 ## 4       4 Baiomys       NA   
 ## 5       5 Baiomys        7.75
 ## 6       6 Baiomys       NA</code></pre>
-<pre class="r"><code>1.</code></pre>
-<pre><code>## [1] 1</code></pre>
+</div>
+<div id="challenge-4" class="section level1">
+<h1>Challenge 4</h1>
 <pre class="r"><code>surveys_spread_genera &lt;- surveys %&gt;%
   group_by(plot_id, year) %&gt;%
   summarize(n_genera = n_distinct(genus)) %&gt;%
   spread(year, n_genera)</code></pre>
 <pre><code>## `summarise()` regrouping output by &#39;plot_id&#39; (override with `.groups` argument)</code></pre>
-<pre class="r"><code>head(surveys_spread_genera)</code></pre>
+<pre class="r"><code>  head(surveys_spread_genera)</code></pre>
 <pre><code>## # A tibble: 6 x 27
 ## # Groups:   plot_id [6]
 ##   plot_id `1977` `1978` `1979` `1980` `1981` `1982` `1983` `1984` `1985`
@@ -1066,8 +1073,6 @@ str(surveys_gather)</code></pre>
 ## #   `1989` &lt;int&gt;, `1990` &lt;int&gt;, `1991` &lt;int&gt;, `1992` &lt;int&gt;, `1993` &lt;int&gt;,
 ## #   `1994` &lt;int&gt;, `1995` &lt;int&gt;, `1996` &lt;int&gt;, `1997` &lt;int&gt;, `1998` &lt;int&gt;,
 ## #   `1999` &lt;int&gt;, `2000` &lt;int&gt;, `2001` &lt;int&gt;, `2002` &lt;int&gt;</code></pre>
-<pre class="r"><code>2.</code></pre>
-<pre><code>## [1] 2</code></pre>
 <pre class="r"><code>surveys_spread_genera %&gt;%
   gather(&quot;year&quot;, &quot;n_genera&quot;, -plot_id)</code></pre>
 <pre><code>## # A tibble: 624 x 3
@@ -1085,14 +1090,11 @@ str(surveys_gather)</code></pre>
 ##  9       9 1977         3
 ## 10      10 1977         1
 ## # ... with 614 more rows</code></pre>
-<pre class="r"><code>3.</code></pre>
-<pre><code>## [1] 3</code></pre>
 <pre class="r"><code>surveys_long &lt;- surveys %&gt;%
   gather(&quot;measurement&quot;, &quot;value&quot;, hindfoot_length, weight)
 
-4.</code></pre>
-<pre><code>## [1] 4</code></pre>
-<pre class="r"><code>surveys_long %&gt;%
+
+surveys_long %&gt;%
   group_by(year, measurement, plot_type) %&gt;%
   summarize(mean_value = mean(value, na.rm=TRUE)) %&gt;%
   spread(measurement, mean_value)</code></pre>
@@ -1112,6 +1114,9 @@ str(surveys_gather)</code></pre>
 ##  9  1978 Short-term Krat Exclosure            36.9   63.8
 ## 10  1978 Spectab exclosure                    42.3   80.1
 ## # ... with 120 more rows</code></pre>
+</div>
+<div id="exporting-data" class="section level1">
+<h1>Exporting Data</h1>
 <pre class="r"><code>surveys_complete &lt;- surveys %&gt;%
   filter(!is.na(weight),        
          !is.na(hindfoot_length),  
@@ -1125,6 +1130,19 @@ species_counts &lt;- surveys_complete %&gt;%
 surveys_complete &lt;- surveys_complete %&gt;%
   filter(species_id %in% species_counts$species_id)
 write_csv(surveys_complete, path = &quot;data/surveys_complete.csv&quot;)</code></pre>
+</div>
+<div id="references" class="section level1">
+<h1>REFERENCES</h1>
+<p><span class="citation">(Xie et al. 2020)</span> <span class="citation">(R Core Team 2015)</span></p>
+<div id="refs" class="references">
+<div id="ref-RCoreTeam">
+<p>R Core Team. 2015. “R: A Language and Environment for Statistical Computing.” Journal Article. <a href="http://www.R-project.org">http://www.R-project.org</a>.</p>
+</div>
+<div id="ref-Xie2020">
+<p>Xie, Y., JJ. Allaire, Y. Xie, J. McPherson, J. Luraschi, K. Ushey, A. Atkins, et al. 2020. “Dynamic Documents for R.” Computer Program. <a href="https://cran.r-project.org/web/packages/rmarkdown/rmarkdown.pdf">https://cran.r-project.org/web/packages/rmarkdown/rmarkdown.pdf</a>.</p>
+</div>
+</div>
+</div>
 
 
 

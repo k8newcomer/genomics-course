@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. [Lab 1](lab1_kmn.html)
 2. [Lab 2](lab2.html)
-3. [Lab 3a](lab3a.html) [Lab 3b](lab3b.html)
+3. [Lab 3a](lab3a.html), [Lab 3b](lab3b.html)
 4. Lab 4: To be Completed
 5. Lab 5: To Be Completed
 6. Lab 6: To be completed

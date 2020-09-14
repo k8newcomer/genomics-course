@@ -4,6 +4,7 @@ title: "Lab 3A"
 author: "Kate Newcomer"
 date: "September 7, 2020"
 output: html_document
+bibliography: data/references.bib
 ---
 ```{r}
 ##wnload.file(url = "https://ndownloader.figshare.com/files/2292169",destfile = "data/portal_data_joined.csv")
@@ -12,6 +13,7 @@ output: html_document
 ```{r}
 library(tidyverse)
 ```
+# Loading and Indexing the Data
 ```{r Loading_IndexingTheData}
 surveys <- read.csv("data/portal_data_joined.csv")
 head(surveys)
@@ -40,6 +42,7 @@ surveys$species_id          # Result is a vector
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# Challenge 1
 ```{r Challenge1}
 surveys_200 <- surveys[200, ]
 n_rows <- nrow(surveys)
@@ -47,6 +50,7 @@ surveys_last <- surveys[n_rows, ]
 surveys_middle <- surveys[n_rows / 2, ]
 surveys_head <- surveys[-(7:n_rows), ]
 ```
+# Factors
 ```{r Factors}
 sex <- factor(c("male", "female", "female", "male"))
 levels(sex)
@@ -55,6 +59,7 @@ sex
 sex <- factor(sex, levels = c("male", "female"))
 sex
 ```
+# Converting Factors
 ```{r Converting_factors}
 as.character(sex)
 year_fct <- factor(c(1990, 1983, 1977, 1998, 1990))
@@ -62,6 +67,7 @@ as.numeric(year_fct)
 as.numeric(as.character(year_fct)) 
 as.numeric(levels(year_fct))[year_fct] 
 ```
+# Renaming Factors
 ```{r renaming_factors}
 plot(as.factor(surveys$sex))
 sex <- factor(surveys$sex)
@@ -71,13 +77,14 @@ levels(sex)[1]
 levels(sex)
 head(sex)
 ```
-
+# Challenge
 ```{r Challenge}
 levels(sex)[2:3] <- c("female", "male")
 sex <- factor(sex, levels = c("female", "male", "undetermined"))
 plot(sex)
 ```
 
+# Using StringsAsFactors is False
 ```{r Using_stringsAsFactorsIsFalse}
 surveys <- read.csv("data/portal_data_joined.csv", stringsAsFactors = TRUE)
 str(surveys)
@@ -86,6 +93,7 @@ str(surveys)
 ## Convert the column "plot_type" into a factor
 surveys$plot_type <- factor(surveys$plot_type)
 ```
+# Challenge
 ```{r challenge}
 animal_data <- data.frame(
           animal = c("dog", "cat", "sea cucumber", "sea urchin"),
@@ -103,6 +111,7 @@ country_climate <- data.frame(
 
 
 ```
+# Formatting Dates
 ```{r formattingDates}
 str(surveys)
 library("lubridate")
@@ -127,11 +136,8 @@ missing_dates <- surveys[is.na(surveys$date), c("year", "month", "day")]
 head(missing_dates)
 
 ```
-
-
-
-
-
-## R Markdown
+# REFERENCES
+[@Xie2020]
+[@RCoreTeam]
 
 
