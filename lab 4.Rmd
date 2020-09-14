@@ -1,0 +1,85 @@
+---
+title: "Untitled"
+author: "Kate Newcomer"
+date: "September 14, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("DT")
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Loading the data
+```{r}
+report_03_11_2020 <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-11-2020.csv")) %>%
+  rename(Country_Region = "Country/Region", Province_State = "Province/State")
+
+str(report_03_11_2020)
+View(report_03_11_2020)
+```
+# Interactive Data Table
+```{r}
+
+datatable(report_03_11_2020)
+```
+# September 13 Data Table
+```{r}
+
+report_09_13_2020 <- read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-13-2020.csv")) 
+str(report_09_13_2020)
+View(report_09_13_2020)
+
+
+```
+# Exercise 1
+```{r}
+datatable(report_09_13_2020)
+```
+
+```{r}
+report_09_13_2020 %>% 
+  group_by(Country_Region, Deaths) %>% 
+  summarize(mean_Deaths = mean(Deaths, na.rm = TRUE)) 
+
+```
+
+```{r}
+report_09_13_2020 %>% 
+  filter(Country_Region == "US") %>% 
+  group_by(Province_State) %>% 
+  summarize(Deaths = mean(Deaths, na.rm = TRUE))
+```
+
+```{r}
+report_09_13_2020 %>% group_by(Country_Region) %>%summarise(Deaths = sum(Deaths)) %>%  arrange(desc(Deaths)) %>% slice(1:10)
+
+
+```
+
+
+# Exercise 2 - 09_13_2020 Data
+```{r}
+top10C <-report_09_13_2020 %>% group_by(Country_Region) %>%summarise(Deaths = sum(Deaths)) %>%  arrange(desc(Deaths)) %>% slice(1:10)
+
+ggplot(data = top10C, aes (x = Country_Region, y = Deaths)) + geom_point()
+
+ggplot(data = top10C, aes (x = Country_Region, y = Deaths)) + geom_bar(stat='identity')
+
+```
+
+
+# Exercise 2 - 03_11_2020 Data
+```{r}
+top10C <-report_03_11_2020 %>% group_by(Country_Region) %>%summarise(Deaths = sum(Deaths)) %>%  arrange(desc(Deaths)) %>% slice(1:10)
+
+ggplot(data = top10C, aes (x = Country_Region, y = Deaths)) + geom_point()
+
+ggplot(data = top10C, aes (x = Country_Region, y = Deaths)) + geom_bar(stat='identity')
+
+```
+
+
+
+
