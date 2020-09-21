@@ -127,11 +127,11 @@ surveys %>%
 
 # Challenge 3
 ```{r Challenge3}
- 
+1. 
 surveys %>%
     count(plot_type) 
 
-
+2.
 surveys %>%
     filter(!is.na(hindfoot_length)) %>%
     group_by(species_id) %>%
