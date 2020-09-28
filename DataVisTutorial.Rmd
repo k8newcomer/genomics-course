@@ -1,0 +1,66 @@
+---
+title: "Data Visualization"
+author: "Kate Newcomer"
+date: "September 27, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library("tidyverse")
+library("hexbin")
+```
+```{r}
+surveys_complete <- read_csv("data/surveys_complete.csv")
+# Assign plot to a variable
+surveys_plot <- ggplot(data = surveys_complete, 
+                       mapping = aes(x = weight, y = hindfoot_length))
+
+# Draw the plot
+surveys_plot + 
+    geom_point()
+```
+
+```{r}
+surveys_plot +
+ geom_hex()
+```
+```{r Challenge}
+ggplot(data = surveys_complete, 
+       mapping = aes(x = species_id, y = weight)) +
+   geom_point(aes(color = plot_type))
+```
+```{r Challenge2}
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = weight)) +
+    geom_violin()
+
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = weight)) +
+    geom_violin() + scale_y_log10()
+
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = hindfoot_length)) +
+    geom_boxplot(aes(color = plot_id)) + geom_jitter(alpha = 0.3, color = "tomato")
+```
+
+```{r Challenge3}
+yearly_weight <- surveys_complete %>%
+                group_by(year, species_id) %>%
+                 summarize(avg_weight = mean(weight))
+
+ggplot(data = yearly_weight, mapping = aes(x=year, y=avg_weight)) +
+   geom_line() +
+   facet_wrap(vars(species_id)) +
+   theme_bw()
+```
+```{r Challenge 4}
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = weight)) +
+    geom_violin()
+
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = weight)) +
+    geom_violin() + scale_y_log10()
+
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = hindfoot_length)) +
+    geom_boxplot(aes(color = plot_id)) + geom_jitter(alpha = 0.3, color = "tomato") + scale_fill_gradient()
+```
+
