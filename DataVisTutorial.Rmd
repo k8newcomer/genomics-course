@@ -63,4 +63,6 @@ ggplot(data = surveys_complete, mapping = aes(x = species_id, y = weight)) +
 ggplot(data = surveys_complete, mapping = aes(x = species_id, y = hindfoot_length)) +
     geom_boxplot(aes(color = plot_id)) + geom_jitter(alpha = 0.3, color = "tomato") + scale_fill_gradient()
 ```
-
+# REFERENCES
+[@Xie2020]
+[@RCoreTeam]

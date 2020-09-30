@@ -1,0 +1,45 @@
+---
+title: "datacarpenntry"
+author: "Kate Newcomer"
+date: "September 21, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library("tidyverse")
+library("hexbin")
+```
+
+```{r}
+surveys_complete <- read_csv("data/surveys_complete.csv")
+```
+```{r}
+ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) +geom_point()
+```
+```{r Challenge 1}
+ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) + geom_hex()
+```
+```{r Challenge 2}
+ggplot(data = surveys_complete, 
+       mapping = aes(x = species_id, y = weight)) +
+   geom_point(aes(color = plot_type))
+```
+```{r Challenge 3}
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = weight)) +
+    geom_violin(alpha = 0) +
+    geom_jitter(alpha = 0.3, color = "tomato")
+
+ggplot(data = surveys_complete, mapping = aes(x = species_id, y = weight)) +
+    geom_violin(alpha = 0) +
+    scale_y_log10() + 
+    geom_jitter(alpha = 0.3, color = "tomato")
+
+ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) + geom_boxplot(aes(color=plot_id))
+```
+
+
+
+
