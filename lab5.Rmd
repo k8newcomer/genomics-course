@@ -29,7 +29,7 @@ Confirmed_State_9_13 <-   read_csv(url("https://raw.githubusercontent.com/CSSEGI
   summarise(Confirmed = sum(Confirmed)) 
 ```
 
-
+# Exercise 2
 ```{r Exercise 2}
 Confirmed_State_6_13 <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/06-13-2020.csv")) %>%
   filter (Country_Region == "US") %>% 
@@ -119,7 +119,7 @@ time_series_long_joined %>%
     geom_line() +
     ggtitle("COVID-19 Deaths")
 ```
-
+# Exercise 5
 ```{r Exercise5}
 time_series_long_joined_rate <- time_series_long_joined %>%
   filter(!is.na(Deaths), !is.na(Confirmed)) %>%
@@ -128,7 +128,7 @@ time_series_long_joined_rate <- time_series_long_joined %>%
   head(time_series_long_joined_rate)
 ```
 
-
+# Exercise 6
 ```{r Exercise6}
 
   
@@ -141,6 +141,8 @@ time_series_long_joined %>%
     geom_line() +
     ggtitle("US COVID-19 Deaths")
 ```
+
+# Exercise 7
 ```{r Exercise7}
 top10C <- time_series_long_joined %>% 
   group_by(Country_Region) %>% 
@@ -157,6 +159,8 @@ time_series_long_joined %>%
     geom_line() +
     ggtitle("Top10 Deaths")
 ```
+
+# Exercise 8
 ```{r Exercise8}
 time_series_long_joined %>%
   group_by(Date, Country_Region) %>%
@@ -173,6 +177,7 @@ time_series_long_joined %>%
 time_series_USdeaths <- read_csv("data/time_series_covid19_deaths_US.csv")
 ```
 
+# Exercise 9
 ```{r Exercise9}
 time_US <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv")) %>% 
   filter (!Province_State %in% c("Alaska","Hawaii", "American Samoa",
