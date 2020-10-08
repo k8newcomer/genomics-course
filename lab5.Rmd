@@ -190,6 +190,17 @@ time_US <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVI
     facet_wrap(facets=vars(Country_Region))
   
 ```
+
+```{r }
+time_series_long_joined %>%
+  group_by(Date, Country_Region) %>%
+  summarise_at(c("Deaths"), sum) %>%
+  filter(Country_Region %in% top10C$Country_Region) %>% 
+  ggplot(aes(x = Date, y=Deaths,color=Country_Region)) + 
+    geom_point() +
+    geom_line() +
+    facet_wrap(facets=vars(Country_Region)) + theme_bw()
+```
 # REFERENCES
 [@Xie2020]
 [@RCoreTeam]
