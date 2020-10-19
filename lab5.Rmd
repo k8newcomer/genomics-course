@@ -201,6 +201,7 @@ time_series_long_joined %>%
     geom_line() +
     facet_wrap(facets=vars(Country_Region)) + theme_bw()
 ```
+
 # REFERENCES
 [@Xie2020]
 [@RCoreTeam]
