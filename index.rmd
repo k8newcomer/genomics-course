@@ -18,6 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 3. [Lab 3a](lab3a.html), [Lab 3b](lab3b.html)
 4. [Lab 4](lab4.html)
 5. [Lab 5a](lab5.html)
+6. [lab 5b](597x.html)
 6. [Data Visualization Tutorial](DataVisTutorial.html)
 7. [Lab 6](lab6.html)
 
