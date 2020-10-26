@@ -21,7 +21,8 @@ knitr::opts_chunk$set(echo = TRUE)
 6. [lab 5b](597x.html)
 6. [Data Visualization Tutorial](DataVisTutorial.html)
 7. [Lab 6](lab6.html)<- Oct-19th No longer populating correctly, I made one update and now getting a pandoc Error. Currently trying to fix it but just wanted to make a note in case grading is done.
-
+8. [lab 7](lab7.html)
+9. [lab 8](lab8.html)
 
 
 # REFERENCES
