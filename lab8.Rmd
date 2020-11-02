@@ -1,0 +1,61 @@
+---
+title: "lab8"
+author: "Kate Newcomer"
+date: "November 2, 2020"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(ggtree)
+# added treeio and ggimage library
+library(treeio)
+library(ggimage)
+# need to install libmagick 
+#sudo apt-get install libmagick++-dev
+```
+```{r}
+tree <- read.tree("data/tree_newick.nwk")
+tree
+```
+
+
+```{r}
+# build a ggplot with a geom_tree
+ggplot(tree) + geom_tree() + theme_tree()
+# This is convenient shorthand
+ggtree(tree)
+```
+
+```{r}
+# add a scale
+ggtree(tree) + geom_treescale()
+# or add the entire scale to the x axis with theme_tree2()
+ggtree(tree) + theme_tree2()
+```
+```{r}
+ggtree(tree, branch.length="none")
+```
+```{r}
+ggtree(tree, branch.length="none", color="blue", size=2, linetype=3)
+```
+```{r}
+# create the basic plot
+p <- ggtree(tree)
+# add node points
+p + geom_nodepoint()
+# add tip points
+p + geom_tippoint()
+# Label the tips
+p + geom_tiplab()
+```
+```{r}
+ggtree(tree) + geom_text(aes(label=node), hjust=-.3)
+```
+```{r}
+ggtree(tree) + geom_tiplab()
+```
+
+
+
+

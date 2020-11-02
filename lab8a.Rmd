@@ -1,0 +1,10 @@
+---
+title: "lab8a"
+author: "Kate Newcomer"
+date: "November 2, 2020"
+output: html_document
+---
+```{r}
+(data/Tree_image.svg)
+```
+
