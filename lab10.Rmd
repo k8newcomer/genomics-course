@@ -1,0 +1,25 @@
+---
+title: "lab10"
+author: "Kate Newcomer"
+date: "November 8, 2020"
+output: html_document
+---
+```{r}
+library(vcfR)
+data(vcfR_example)
+vcf
+strwrap(vcf@meta[1:7])
+queryMETA(vcf)
+```
+
+```{r}
+queryMETA(vcf, element = 'DP')
+queryMETA(vcf, element = 'FORMAT=<ID=DP')
+head(getFIX(vcf))
+```
+
+```{r}
+vcf@gt[1:6, 1:4]
+vcf <- read.vcfR("Grunwald/pinfsc50_filtered.vcf.gz")
+```
+

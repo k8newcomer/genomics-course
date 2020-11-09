@@ -1,0 +1,105 @@
+---
+title: "9a"
+author: "Kate Newcomer"
+date: "November 8, 2020"
+output: html_document
+---
+
+```{r}
+## Generate a uniform random number
+x <- runif(1, 0, 10)  
+if(x > 3) {
+        y <- 10 * x
+} else {
+        y <- 0
+}
+print(y)
+```
+
+for loops
+```{r}
+for(i in 1:10) {
+  if(i%%2==0){
+        print( " It is an even number")
+  }
+  else {
+    print(" it is an odd number")
+  }
+}
+```
+```{r}
+x <- c("a", "b", "c", "d")
+for(i in 1:4) {
+        ## Print out each element of 'x'
+        print(x[i])  
+}
+```
+```{r}
+for(i in seq_along(x)) {   
+        print(x[i])
+}
+```
+```{r}
+for(letter in x) {
+        print(letter)
+}
+```
+```{r}
+for(i in 1:4) print(x[i])
+
+```
+```{r}
+x <- matrix(1:6, 2, 3)
+for(i in seq_len(nrow(x))) {
+        for(j in seq_len(ncol(x))) {
+                print(x[i, j])
+        }   
+}
+```
+```{r}
+count <- 0
+while(count < 10) {
+        print(count)
+        count <- count + 1
+}
+```
+
+
+```{r}
+z <- 5
+set.seed(1)
+while(z >= 3 && z <= 10) {
+        coin <- rbinom(1, 1, 0.5)
+        
+        if(coin == 1) {  ## random walk
+                z <- z + 1
+        } else {
+                z <- z - 1
+        } 
+}
+print(z)
+```
+
+```{r}
+f <- function(num) {
+        hello <- "Hello, world!\n"
+        for(i in seq_len(num)) {
+                cat(hello)
+        }
+        chars <- nchar(hello) * num
+        chars
+}
+meaningoflife <- f(3)
+```
+```{r}
+f <- function(num = 1) {
+        hello <- "Hello, world!\n"
+        for(i in seq_len(num)) {
+                cat(hello)
+        }
+        chars <- nchar(hello) * num
+        chars
+}
+f() 
+```
+

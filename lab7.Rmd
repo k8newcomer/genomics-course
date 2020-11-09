@@ -6,8 +6,8 @@ author: "Kate Newcomer"
 date: "10/12/2020"
 output: html_document
 ---
-
-```{r include=FALSE, message=FALSE, warning=FALSE}
+ # Load in the librarues
+```{r include=FALSE, message=FALSE, eval=FALSE, warning=FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("rnaseqGene")
@@ -36,7 +36,7 @@ opts_chunk$set(message = FALSE, error = FALSE, warning = FALSE,
 ```{r}
 library("airway")
 ```
-
+Set up the directory
 ```{r}
 dir <- system.file("extdata", package="airway", mustWork=TRUE)
 ```
@@ -44,13 +44,13 @@ dir <- system.file("extdata", package="airway", mustWork=TRUE)
 list.files(dir)
 list.files(file.path(dir, "quants"))
 ```
-
+Raw sample csv into readable data frame
 ```{r}
 csvfile <- file.path(dir, "sample_table.csv")
 coldata <- read.csv(csvfile, row.names=1, stringsAsFactors=FALSE)
 coldata
 ```
-
+Shortened data frame
 ```{r}
 coldata <- coldata[1:2,]
 coldata$names <- coldata$Run
@@ -540,9 +540,11 @@ ddssva$SV1 <- svseq$sv[,1]
 ddssva$SV2 <- svseq$sv[,2]
 design(ddssva) <- ~ SV1 + SV2 + dex
 ```
+Load in RUVSeq to perform statistical analysis
 ```{r}
 library("RUVSeq")
 ```
+performed to determine the amount of significant empirical values
 ```{r}
 set <- newSeqExpressionSet(counts(dds))
 idx  <- rowSums(counts(set) > 5) >= 2

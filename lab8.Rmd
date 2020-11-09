@@ -55,7 +55,37 @@ ggtree(tree) + geom_text(aes(label=node), hjust=-.3)
 ```{r}
 ggtree(tree) + geom_tiplab()
 ```
+Exercise1
+```{r}
+ggtree(tree,mapping=NULL, layout="slanted")
 
+ggtree(tree, mapping=NULL, layout="circular")
+
+ggtree(tree, color="red", size=2, linetype=3, layout="circular")
+```
+
+exercise 2
+```{r}
+q <- ggtree(tree)
+q +
+    geom_tiplab(color="darkorchid1", size=5) + 
+  geom_tippoint(color="darkorchid1", size=2, shape=18) + 
+  geom_nodepoint(color="gold", size=4, alpha=1/2) + 
+  ggtitle("Exercise 2")
+```
+Exercise 3
+```{r}
+q <- ggtree(tree)
+q +
+    geom_tiplab(color="gray0", size=5) + 
+  geom_taxalink("E", "C", color="gray50", linetype=2) +
+  geom_taxalink("G", "J", color="gray50", linetype=2) +
+    geom_hilight(node=19, fill="blue3") + 
+  geom_hilight(node=23, fill="orange2") + 
+  geom_cladelabel(node=17, label="Superclade 17", color="red3", offset=.8) + 
+  geom_tippoint(color="darkorchid1", size=2, shape=18) + 
+  ggtitle("Exercise 3")
+```
 
 
 
