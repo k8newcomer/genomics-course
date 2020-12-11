@@ -1,0 +1,48 @@
+---
+title: "lab12"
+author: "Kate Newcomer"
+date: "December 7, 2020"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+# Example 1: Visualization
+
+<img src="datavis1.png" width="35%">
+
+# String Enrichment
+
+
+<img src="datavis2.png" width="40%">
+
+# Exercise 3
+
+```{r}
+library(RCy3)
+cytoscapePing()
+```
+```{r}
+nodes <- data.frame(id=c("node 0","node 1","node 2","node 3"),
+           group=c("A","A","B","B"), # categorical strings
+           score=as.integer(c(20,10,15,5)), # integers
+           stringsAsFactors=FALSE)
+
+edges <- data.frame(source=c("node 0","node 0","node 0","node 2"),
+           target=c("node 1","node 2","node 3","node 3"),
+           interaction=c("inhibits","interacts","activates","interacts"),  # optional
+           weight=c(5.1,3.0,5.2,9.9), # numeric
+           stringsAsFactors=FALSE)
+
+createNetworkFromDataFrames(nodes,
+                            edges, 
+                            title="my first network", 
+                            collection="DataFrame Example")
+```
+```{r}
+setNodeShapeDefault ('OCTAGON')
+setNodeColorDefault ('#AAFF88')
+setNodeSizeDefault  (60)
+setNodeFontSizeDefault (30)
+```
+
