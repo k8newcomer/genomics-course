@@ -28,7 +28,8 @@ knitr::opts_chunk$set(echo = TRUE)
 12. [lab 11](lab11.html)
 13. [lab 12](lab12.html)
 14. [lab 13](lab13.html)
-
 # REFERENCES
 [@Xie2020]
 [@RCoreTeam]
+=======
+
