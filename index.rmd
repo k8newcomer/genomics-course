@@ -17,14 +17,17 @@ knitr::opts_chunk$set(echo = TRUE)
 2. [Lab 2](lab2.html)
 3. [Lab 3a](lab3a.html), [Lab 3b](lab3b.html)
 4. [Lab 4](lab4.html)
-5. [Lab 5](lab5.html)  <- Oct-19th No longer populating correctly, I made one update and now getting a pandoc Error. Currently trying to fix it but just wanted to make a note in case grading is done.
+5. [Lab 5](lab5.html)  
 6. [lab 5b](597x.html)
 6. [Data Visualization Tutorial](DataVisTutorial.html)
-7. [Lab 6](lab6.html)<- Oct-19th No longer populating correctly, I made one update and now getting a pandoc Error. Currently trying to fix it but just wanted to make a note in case grading is done.
+7. [Lab 6](lab6.html)
 8. [lab 7](lab7.html)
 9. [lab 8](lab8.html)
 10. [lab 9](lab9a.html)
 11. [lab 10](lab10.html)
+12. [lab 11](lab11.html)
+13. [lab 12](lab12.html)
+14. [lab 13](lab13.html)
 
 # REFERENCES
 [@Xie2020]
